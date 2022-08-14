@@ -350,7 +350,7 @@ namespace Distance
 
 		public bool ShouldDrawAggroDistanceInfo()
 		{
-			//if( mClientState.IsPvP ) return false;
+			if( mClientState.IsPvP ) return false;
 
 			//***** TODO: We probably need some director info to make it not show as curtain is coming up.  Condition and addon visibility are are failing us here.
 			return	mConfiguration.ShowAggroDistance &&
@@ -365,7 +365,7 @@ namespace Distance
 		//	It's tempting to put this into the config filters class, but we rely on a few things that won't know about, so just keeping it here to avoid having to pass in even more stuff.
 		public bool ShouldDrawDistanceInfo( DistanceWidgetConfig config )
 		{
-			// if( mClientState.IsPvP ) return false;
+			if( mClientState.IsPvP ) return false;
 			if( !config.Enabled ) return false;
 			if( config.HideInCombat && mCondition[ConditionFlag.InCombat] ) return false;
 			if( config.HideOutOfCombat && !mCondition[ConditionFlag.InCombat] ) return false;
