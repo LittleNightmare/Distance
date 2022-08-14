@@ -63,7 +63,7 @@ namespace Distance
 			Task.Run( async () =>
 			{
 				//	We can have the aggro distances data that got shipped with the plugin, or one that got downloaded.  Load in both and see which has the higher version to decide which to actually use.
-				string aggroDistancesFilePath_Assembly = Path.Join( mPluginInterface.AssemblyLocation.DirectoryName, "AggroDistances.dat" );
+				string aggroDistancesFilePath_Assembly = Path.Join( mPluginInterface.AssemblyLocation.DirectoryName, "Resources\\AggroDistances.dat" );
 				string aggroDistancesFilePath_Config = Path.Join( mPluginInterface.GetPluginConfigDirectory(), "AggroDistances.dat" );
 				BNpcAggroInfoFile aggroFile_Assembly = new();
 				BNpcAggroInfoFile aggroFile_Config = new();
@@ -332,10 +332,9 @@ namespace Distance
 		public void OnGameFrameworkUpdate( Framework framework )
 		{
 			UpdateTargetDistanceData();
+
 			if( mConfiguration.NameplateDistancesConfig.ShowNameplateDistances ) NameplateHandler.EnableNameplateDistances();
 			else NameplateHandler.DisableNameplateDistances();
-
-			NameplateHandler.UpdateNameplateEntityDistanceData();	//***** TODO: Move this to the draw hook.
 		}
 
 		protected void OnTerritoryChanged( object sender, UInt16 ID )
